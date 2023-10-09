@@ -1,11 +1,14 @@
 name: Deployment
 
-concurrency: production
+concurrency:
+  group: production
+  cancel-in-progress: true
 
 on:
   push:
     branches:
       - main
+      
 jobs:
   build:
     runs-on: ubuntu-latest
