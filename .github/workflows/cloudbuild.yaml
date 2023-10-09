@@ -1,4 +1,7 @@
-name: Bump version
+name: Deployment
+
+concurrency: production
+
 on:
   push:
     branches:
