@@ -47,7 +47,7 @@ module.exports = {
                     FIRST_NAME: data[0].act_first_name_th,
                     LAST_NAME: data[0].act_last_name_th,
                     EMAIL: data[0].act_email_address,
-                    ROLE:   data[0].act_roles,
+                    role:   data[0].act_roles,
                 }
                 const token = jwt.sign(user, 'IVSOFT', { expiresIn: '3600s' });
                 user.token = token

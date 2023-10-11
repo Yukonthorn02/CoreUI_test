@@ -57,6 +57,7 @@
           hover: true,
         }"
       >
+      <!---->
         <template #status_eng="{ item }">
           <td>
             <CBadge :color="getBadge(item.status_eng)">{{ item.status_eng }}</CBadge>

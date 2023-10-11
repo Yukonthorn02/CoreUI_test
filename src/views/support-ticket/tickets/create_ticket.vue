@@ -145,23 +145,23 @@ export default {
                 { label: 'Service Request', value: 'Service' },
                 { label: 'ไม่ระบุ', value: 'none', disabled: true }
             ];
-            this.getUser() 
+            // this.getUser() 
 
     },
 
     methods: {
       //เรียกใช้ฟังกืชั่น get จาก server ดึงข้อมูลจาก model stts_account
-        async getUser(){
-          const user= await axios.get('http://localhost:3000/mongoose/get/stts_accounts')
-          const users= await axios.post('http://localhost:3000/mongoose/get/stts_tickets',{populate:['tkt_act']})
-          console.log(users)
-          user.data.forEach(element => {
-            this.userOptions.push({value:element._id,label:element.act_username})
+        // async getUser(){
+        //   const user= await axios.get('http://localhost:3000/mongoose/get/stts_accounts')
+        //   const users= await axios.post('http://localhost:3000/mongoose/get/stts_tickets',{populate:['tkt_act']})
+        //   console.log(users)
+        //   user.data.forEach(element => {
+        //     this.userOptions.push({value:element._id,label:element.act_username})
             
-          });
+        //   });
 
           
-        },
+        // },
         async getType(){
           const type= await axios.get('http://localhost:3000/mongoose/get/stts_types')
           const types= await axios.post('http://localhost:3000/mongoose/get/stts_types')//,{populate:['tkt_act']}
@@ -229,6 +229,7 @@ export default {
             this.form.tkt_number = ticket_number;
             this.form.tkt_act = userId;
             this.form.tkt_status = ticket_status;
+            this.form.tkt_book= false;
             console.log(this.form);
 
             try {

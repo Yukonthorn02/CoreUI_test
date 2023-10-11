@@ -44,8 +44,8 @@ const SchemaData = new schema({
         required: true,
     },
     tkt_book: {
-        type: String,
-        required: false,
+        type: Boolean,
+        required: true,
     },
     tkt_act: {
         type: schema.Types.ObjectId,
