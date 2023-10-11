@@ -50,7 +50,7 @@
                     <CFormCheck class="remember" id="rememberMe" label="Remember me"/>
                     <CRow>
                       <CCol :xs="6">
-                        <CButton color="dark" class="px-4" @click="vaildateBeforeSave"> Login </CButton>
+                        <CButton color="dark" class="px-4" @click="onLoginClick"> Login </CButton>
                       </CCol>
                     </CRow>
                   </CForm>
@@ -68,6 +68,7 @@
   }
 </style>
 <script>
+import axios from 'axios'
 import { CIcon } from '@coreui/icons-vue';
 import { cilToggleOff,cilToggleOn } from '@coreui/icons';
 import login  from '@/assets/images/login.jpg'
@@ -92,7 +93,7 @@ export default {
     },
     methods: {
       vaildateBeforeSave() {
-        let error
+        let error = false
         if (this.form.username === '') {
           error = true
           this.validate.username = true
@@ -101,15 +102,43 @@ export default {
           error = true
           this.validate.password = true
         }
-        if (error) {
-        } else if(this.form.username === 'supakit' && this.form.password === '00000000') {
-          this.onLoginClick()
-        }else{
-          alert("เข้าสู่ระบบไม่สำเร็จ")
-        }
+        return error
+        // if (error) {
+          // } else if(this.form.username === 'supakit' && this.form.password === '00000000') {
+          //   this.onLoginClick()
+        // }else{
+          // alert("เข้าสู่ระบบไม่สำเร็จ")
+        // }
       },
-      onLoginClick() {
-        this.$router.push('/smart');
+      async onLoginClick() {
+        if (this.vaildateBeforeSave()) {
+          
+
+        } else {
+          try {
+            const response = await axios.post('http://localhost:3000/auth/login', { username: this.form.username, password: this.form.password })
+            console.log(response);
+            console.log(response.data.user.role)
+            const user = {
+              id: response.data.user.id, 
+              USERNAME: response.data.user.USERNAME,
+              role:response.data.user.role,
+              // role: response.data.data.role,  
+              token: response.data.user.token
+              
+            }
+
+            localStorage.setItem('USER_DATA', JSON.stringify(user))
+            setTimeout(function() {
+              this.$router.push('/support-ticket/user/dashboard');
+            }.bind(this), 1500)
+            
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        
+        // this.$router.push('/support-ticket/user/dashboard');
       },
       showPassword(){
         var x = document.getElementById("password");

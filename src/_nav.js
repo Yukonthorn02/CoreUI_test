@@ -1,5 +1,4 @@
 export default [
-
   {
     component: 'CNavItem',
     icon:'cil-cursor',
@@ -13,7 +12,7 @@ export default [
   {
     component: 'CNavItem',
     name: 'Dashboard',
-    to: '/smart',
+    to: '/support-ticket/user/dashboard',
     icon: 'cil-speedometer',
     badge: {
       color: 'info',

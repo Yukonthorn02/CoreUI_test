@@ -280,16 +280,6 @@ const routes = [
         component: () => import('@/views/widgets/Widgets.vue'),
       },
       {
-        path: '/smart-table',
-        name: 'Smart Table',
-        component: () => import('@/views/smart-table/book_mark'),
-      },
-      {
-        path: '/smart',
-        name: 'Smart Table',
-        component: () => import('@/views/smart-table/SmartTableBasixExample.vue'),
-      },
-      {
         path: '/calendar',
         name: 'Calendar',
         component: () => import('@/views/plugins/Calendar.vue'),
@@ -298,6 +288,9 @@ const routes = [
         path: 'apps',
         name: 'Apps',
         redirect: '/apps/invoicing/invoice',
+        meta: {
+          restriction: "SUPER-ADMIN"
+        },
         component: {
           render() {
             return h(resolveComponent('router-view'))
@@ -349,6 +342,11 @@ const routes = [
             component: () => import('@/views/support-ticket/users/CreateUser.vue'),
           },
           {
+            path: 'user/dashboard',
+            name: 'ST - Dashboard User',
+            component: () => import('@/views/support-ticket/users/user_dashboard.vue'),
+          },
+          {
             path: 'ticket/create',
             name: 'ST - Create Ticket',
             component: () => import('@/views/support-ticket/tickets/create_ticket.vue'),
@@ -356,12 +354,67 @@ const routes = [
           {
             path: 'ticket/book',
             name: 'ST - bookmark Ticket',
-            component: () => import('@/views/smart-table/book_mark'),
+            component: () => import('@/views/support-ticket/users/book_mark.vue'),
           },
           {
             path: 'ticket/comment',
             name: 'ST - comment Ticket',
-            component: () => import('@/views/support-ticket/tickets/comment.vue'),
+            component: () => import('@/views/support-ticket/tickets/comment'),
+          },
+          {
+            path: 'admin/priority_list',
+            name: 'ST - priority_list Ticket',
+            component: () => import('@/views/support-ticket/admin/priority_list.vue'),
+          },
+          {
+            path: 'admin/add_account',
+            name: 'ST - add_account',
+            component: () => import('@/views/support-ticket/admin/add_account.vue'),
+          },
+          {
+            path: 'admin/admin_dashboard',
+            name: 'ST - admin_dashboard',
+            component: () => import('@/views/support-ticket/admin/admin_dashboard.vue'),
+          },
+          {
+            path: 'admin/edit_account',
+            name: 'ST - edit_account',
+            component: () => import('@/views/support-ticket/admin/edit_account.vue'),
+          },
+          {
+            path: 'admin/delete_account',
+            name: 'ST - delete_account',
+            component: () => import('@/views/support-ticket/admin/delete_account.vue'),
+          },
+          {
+            path: 'admin/edit_priority',
+            name: 'ST - edit_priority',
+            component: () => import('@/views/support-ticket/admin/edit_priority.vue'),
+          },
+          {
+            path: 'admin/create_priority',
+            name: 'ST - create_priority',
+            component: () => import('@/views/support-ticket/admin/create_priority.vue'),
+          },
+          {
+            path: 'it/it_book_mark',
+            name: 'ST - it_book_mark',
+            component: () => import('@/views/support-ticket/it/it_book_mark.vue'),
+          },
+          {
+            path: 'it/it_dashboard',
+            name: 'ST - it_dashboard',
+            component: () => import('@/views/support-ticket/it/it_dashboard.vue'),
+          },
+          {
+            path: 'manager/manager_dashboard',
+            name: 'ST - manager_dashboard',
+            component: () => import('@/views/support-ticket/manager/manager_dashboard.vue'),
+          },
+          {
+            path: 'it/it_my_task',
+            name: 'ST - it_my_task',
+            component: () => import('@/views/support-ticket/it/it_my_task.vue'),
           },
         ],
       },
@@ -438,5 +491,22 @@ const router = createRouter({
     return { top: 0 }
   },
 })
+
+router.beforeEach(async (to, from, next) => {
+  const user = JSON.parse(localStorage.getItem('USER_DATA'))
+  const restrict = to.meta.restriction
+  if (!user && to.name !== "Login") {
+    return next({ name: "Login" })
+  } else if (user && to.name === "Login") {
+    return next("/support-ticket/user/dashboard");
+  } else {
+    if (restrict && user.role !== restrict) {
+      return next("/support-ticket/user/dashboard");
+    } else {
+      return next();
+    }
+    
+  }
+});
 
 export default router

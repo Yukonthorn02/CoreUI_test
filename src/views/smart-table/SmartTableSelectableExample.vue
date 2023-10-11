@@ -30,7 +30,7 @@
 
 <script>
 import { computed, ref } from 'vue'
-import data from './_data'
+import data from '../support-ticket/users/_data'
 export default {
   name: 'SmartTableSelectableExample',
   setup() {
