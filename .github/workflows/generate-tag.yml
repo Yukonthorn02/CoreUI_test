@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted-runner
+    runs-on: self-hosted
 
     steps:
       - name: Frontend
@@ -18,7 +18,7 @@ jobs:
           docker build -t vue-app .
 
   backend-build:
-    runs-on: self-hosted-runner
+    runs-on: self-hosted
     
 
     steps:
@@ -31,7 +31,7 @@ jobs:
           docker build -t node-js .
   
   deploy:
-    runs-on: self-hosted-runner
+    runs-on: self-hosted
     needs: [build, backend-build] # รอจนกว่า build-frontend จะเสร็จสิ้น
     steps:
       - name: Deploy
