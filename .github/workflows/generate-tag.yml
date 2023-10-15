@@ -22,7 +22,7 @@ jobs:
     
 
     steps:
-      - name: Backend
+      - name: backend
         uses: actions/checkout@v2
 
       - name: Build Backend Docker
