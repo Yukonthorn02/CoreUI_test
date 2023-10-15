@@ -9,15 +9,12 @@ COPY package*.json ./
 
 # Install project dependencies
 RUN npm install
-# Install project dependencies
-RUN npm build
 
-#ass
-COPY . .
-
+# Copy the built Vue.js application to the container
+COPY build/ ./dist/
 
 # Expose a port for the application (change to your desired port)
 EXPOSE 5000
 
 # Define the command to run the application
-CMD [ "npm",  "start" ]
+CMD [ "npm", "run", "start" ]
