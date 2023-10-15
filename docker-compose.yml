@@ -1,0 +1,16 @@
+version: '3'
+services:
+  frontend:
+    container_name: client
+    build:
+      context: ./
+    ports:
+      - "8080:8080"
+    
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    

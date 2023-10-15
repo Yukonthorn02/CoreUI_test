@@ -1,0 +1,29 @@
+name: Generate Release Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Build Docker
+        run: |
+          docker build -t vue-app .
+          docker build -t node-js .
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Deploy to docker
+        run: |
+          docker compose up -d
