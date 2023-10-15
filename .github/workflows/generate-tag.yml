@@ -15,7 +15,6 @@ jobs:
 
       - name: Build Frontend Docker
         run: |
-          cd ./
           docker build -t vue-app frontend/
 
   backend-build:
@@ -27,7 +26,7 @@ jobs:
 
       - name: Build Backend Docker
         run: |
-          cd ./backend
+          cd .\backend\\
           docker build -t node-js backend/
 
   deploy:
