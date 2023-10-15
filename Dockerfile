@@ -11,10 +11,10 @@ COPY package*.json ./
 RUN npm install
 
 # Expose the port your Vue.js application will run on
-EXPOSE 5000
+EXPOSE 8080
 
 # Define the command to build and run the application
-CMD [ "npm", "run", "build" ]
+
 
 # Add the rest of your project files to the container
 COPY . .
