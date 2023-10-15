@@ -16,7 +16,7 @@ COPY . .
 
 
 # Expose the port your Next.js app runs on (usually 3000)
-EXPOSE 8080
+EXPOSE 5000
 
 # Start the Next.js app
 CMD ["npm", "sevre"]
