@@ -19,6 +19,7 @@ jobs:
 
   backend-build:
     runs-on: ubuntu-latest
+    
 
     steps:
       - name: Backend
@@ -31,7 +32,7 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
-
+    needs: [build, backend-build] # รอจนกว่า build-frontend จะเสร็จสิ้น
     steps:
       - name: deploy
         uses: actions/checkout@v2
