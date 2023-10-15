@@ -20,4 +20,4 @@ EXPOSE 8080
 COPY . .
 
 # Expose a port for serving the built Vue.js application (may need to adjust the port)
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "serve" ]
