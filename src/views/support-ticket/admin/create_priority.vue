@@ -4,7 +4,7 @@
     <div style="width: 60%">
     <br>
     <CRow class="e-3">
-      <h1>Create New Priority</h1>
+      <h1>Create New Priority!</h1>
 
     </CRow>
     <br>
