@@ -13,7 +13,7 @@ RUN npm install
 RUN npm build
 
 #ass
-COPY ./dist/ /app/dist/
+COPY . .
 
 
 # Expose a port for the application (change to your desired port)
