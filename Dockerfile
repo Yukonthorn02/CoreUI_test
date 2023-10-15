@@ -9,8 +9,11 @@ COPY package*.json ./
 
 # Install project dependencies
 RUN npm install
+# Install project dependencies
+RUN npm build
+
 #ass
-COPY . .
+COPY ./dist/ /app/dist/
 
 
 # Expose a port for the application (change to your desired port)
