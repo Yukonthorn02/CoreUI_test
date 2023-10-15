@@ -16,7 +16,7 @@ COPY . .
 
 
 # Expose the port your Next.js app runs on (usually 3000)
-EXPOSE 4000
+EXPOSE 3000
 
 # Start the Next.js app
 CMD ["npm", "dev"]
