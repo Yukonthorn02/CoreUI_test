@@ -1,22 +1,20 @@
-# Use an official Node.js runtime as a parent image
+# Use an official Node.js runtime as the base image
 FROM node:14
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-# Install dependencies
+# Install project dependencies
 RUN npm install
-
-
-# Copy the rest of the application code to the working directory
+#asd
 COPY . .
 
 
-# Expose the port your Next.js app runs on (usually 3000)
+# Expose a port for the application (change to your desired port)
 EXPOSE 5000
 
-# Start the Next.js app
-CMD ["npm", "sevre"]
+# Define the command to run the application
+CMD [ "npm", "run", "start" ]
