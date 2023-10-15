@@ -34,7 +34,7 @@ jobs:
     runs-on: self-hosted-runner
     needs: [build, backend-build] # รอจนกว่า build-frontend จะเสร็จสิ้น
     steps:
-      - name: deploy
+      - name: Deploy
         uses: actions/checkout@v2
 
       - name: Deploy with Docker Compose
