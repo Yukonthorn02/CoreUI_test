@@ -9,7 +9,7 @@ COPY package*.json ./
 
 # Install project dependencies
 RUN npm install
-#asd
+#ass
 COPY . .
 
 
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # Define the command to run the application
-CMD [ "npm", "run", "start" ]
+CMD [ "npm",  "start" ]
