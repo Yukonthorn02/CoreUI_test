@@ -102,29 +102,32 @@ export default {
           error = true
           this.validate.password = true
         }
-        return error
-        // if (error) {
-          // } else if(this.form.username === 'supakit' && this.form.password === '00000000') {
-          //   this.onLoginClick()
-        // }else{
-          // alert("เข้าสู่ระบบไม่สำเร็จ")
-        // }
+        if (error) {
+          } else if(this.form.username === 'supakit' && this.form.password === '00000000') {
+            this.onLoginClick()
+        }else{
+          alert("เข้าสู่ระบบไม่สำเร็จ")
+        }
       },
       async onLoginClick() {
-        if (this.vaildateBeforeSave()) {
+        // if (this.vaildateBeforeSave()) {
           
 
-        } else {
+        // } else {
           try {
-            const response = await axios.post('http://localhost:3000/auth/login', { username: this.form.username, password: this.form.password })
-            console.log(response);
-            console.log(response.data.user.role)
+            // const response = await axios.post('http://localhost:3000/auth/login', { username: this.form.username, password: this.form.password })
+            // console.log(response);
+            // console.log(response.data.user.role)
             const user = {
-              id: response.data.user.id, 
-              USERNAME: response.data.user.USERNAME,
-              role:response.data.user.role,
-              // role: response.data.data.role,  
-              token: response.data.user.token
+              id:'bank',
+              user:'supakit',
+
+              // id: response.data.user.id, 
+              // USERNAME: response.data.user.USERNAME,
+              // role:response.data.user.role,
+              // // role: response.data.data.role,  
+              // token: response.data.user.token
+
               
             }
 
@@ -136,7 +139,7 @@ export default {
           } catch (error) {
             console.log(error)
           }
-        }
+        // }
         
         // this.$router.push('/support-ticket/user/dashboard');
       },
