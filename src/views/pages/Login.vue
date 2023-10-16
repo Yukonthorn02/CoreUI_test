@@ -15,7 +15,7 @@
               </CCol>
               <CCol>
                   <CForm>
-                    <h1 class="mt-5">login</h1>
+                    <h1 class="mt-5">LOGIN for deploy</h1>
                     <CFormLabel>UsernamE</CFormLabel>
                     <CInputGroup class="mb-3">
                       <CFormInput
@@ -103,7 +103,7 @@ export default {
           this.validate.password = true
         }
         if (error) {
-          } else if(this.form.username === 'supakit' && this.form.password === '00000000') {
+          } else if(this.form.username === 'suphakit' && this.form.password === '00000000') {
             this.onLoginClick()
         }else{
           alert("เข้าสู่ระบบไม่สำเร็จ")
