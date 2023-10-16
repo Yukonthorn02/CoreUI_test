@@ -50,7 +50,7 @@
                     <CFormCheck class="remember" id="rememberMe" label="Remember me"/>
                     <CRow>
                       <CCol :xs="6">
-                        <CButton color="dark" class="px-4" @click="onLoginClick"> Login </CButton>
+                        <CButton color="dark" class="px-4" @click="onLoginClick"> login </CButton>
                       </CCol>
                     </CRow>
                   </CForm>
