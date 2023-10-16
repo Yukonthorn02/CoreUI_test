@@ -16,7 +16,7 @@
               <CCol>
                   <CForm>
                     <h1 class="mt-5">login</h1>
-                    <CFormLabel>Username</CFormLabel>
+                    <CFormLabel>UsernamE</CFormLabel>
                     <CInputGroup class="mb-3">
                       <CFormInput
                         v-model="form.username"
