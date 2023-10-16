@@ -15,7 +15,7 @@
               </CCol>
               <CCol>
                   <CForm>
-                    <h1 class="mt-5">lOGIN</h1>
+                    <h1 class="mt-5">login</h1>
                     <CFormLabel>Username</CFormLabel>
                     <CInputGroup class="mb-3">
                       <CFormInput
